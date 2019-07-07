@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import productsReducer from './products';
+import { combineReducers } from "redux";
+import productsReducer from "./product";
 
 export const appReducer = combineReducers({
-    products: productsReducer,
+	product: productsReducer
 });
 
 export default (state, action) => {
-    return appReducer(state, action);
+	return appReducer(state, action);
 };
