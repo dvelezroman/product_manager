@@ -1,8 +1,9 @@
 import React from "react";
+import { Button } from "reactstrap";
 
 const Products = ({ products, working }) => (
 	<div>
-		<h2>{working ? "Loading..." : products.length}</h2>
+		{working ? <h2>Loading...</h2> : <Button color="danger">Danger!</Button>}
 	</div>
 );
 
