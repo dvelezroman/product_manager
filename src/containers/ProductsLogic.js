@@ -6,10 +6,11 @@ export class ProductsLogic {
 		};
 		this.state = Container.state;
 		this.props = Container.props;
-		this.props.setWorking(true);
 	}
 
-	fetchProducts = () => {
-		this.props.getProductsRequest();
+	fetchProducts = async () => {
+		this.props.setWorking(true);
+		await this.props.getProductsRequest();
+		setTimeout(() => this.props.setWorking(false), 1000); // the request is fast, so I have to set a timeout to simulate the fetching
 	};
 }

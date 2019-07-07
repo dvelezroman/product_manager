@@ -15,14 +15,13 @@ class ProductContainer extends React.Component {
 
 	componentDidMount() {
 		this.logic.fetchProducts();
-		this.props.setWorking(false);
 	}
 
 	render() {
 		const { products, working } = this.props;
 		console.log({ products });
 		console.log({ working });
-		return <Products products={products} />;
+		return <Products products={products} working={working} />;
 	}
 }
 
