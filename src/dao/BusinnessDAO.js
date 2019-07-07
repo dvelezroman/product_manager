@@ -1,10 +1,10 @@
 import { filter } from "lodash";
 
-import { Connection } from "Connection";
+import { Connection } from "./Connection";
 
-export class Businness {
-	constructor(endpoints, pk, name) {
-		this.pk = pk;
+export class BusinnessDAO {
+	constructor(id, name, endpoints) {
+		this.pk = id;
 		this.name = name;
 		this.endpoints = endpoints;
 	}
@@ -22,14 +22,14 @@ export class Businness {
 		};
 	}
 
-	getAll(endpoint, body = {}) {
+	async getAll() {
 		try {
-			const response = Connection.get(endpoint);
+			const response = await Connection.get(this.endpoints.getAll);
 			return this.parseResponse(response.data);
 		} catch (error) {
 			return {
-				status: error.response.status,
-				data: error.response.data,
+				status: error.status,
+				data: error.response,
 				msg: "Error"
 			};
 		}

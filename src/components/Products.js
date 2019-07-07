@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const Products = () => (
-    <div>Show your list here</div>
-);
+const Products = ({ products }) => <div>{products.length}</div>;
 
 export default Products;

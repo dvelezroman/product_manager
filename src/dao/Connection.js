@@ -1,19 +1,13 @@
 import axios from "axios";
+import { API_URL } from "../config/default";
 
 export class Connection {
-	constructor(urlBase) {
-		this.urlBase = urlBase;
+	static get(endpoint) {
+		console.log(API_URL + endpoint);
+		return axios.get(API_URL + endpoint);
 	}
 
-	getUrl(endpoint) {
-		return this.urlBase + endpoint;
-	}
-
-	get(endpoint, body) {
-		return axios.get(getUrl(endpoint));
-	}
-
-	post(endpoint, body) {
-		return axios.post(getUrl(endpoint), body);
+	static post(endpoint, body) {
+		return axios.post(this.getUrl(endpoint), body);
 	}
 }

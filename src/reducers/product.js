@@ -1,27 +1,18 @@
-import * as a from "../action-creators/product";
+import {
+	GET_PRODUCTS_REQUEST_SUCCESS,
+	REMOVE_PRODUCT_FROM_LOCAL
+} from "../actions/product";
 
-const INITIAL_STATE = {
-	products: [],
-	isProcessing: false
-};
+const INITIAL_STATE = [];
 
 export default function productsReducer(state = INITIAL_STATE, action) {
 	switch (action.type) {
-		case a.GET_PRODUCTS_REQUEST: {
-			// Handle action
-			break;
+		case GET_PRODUCTS_REQUEST_SUCCESS: {
+			return action.payload;
 		}
-
-		case a.GET_PRODUCTS_REQUEST_SUCCESS: {
-			// Handle action
-			break;
+		case REMOVE_PRODUCT_FROM_LOCAL: {
+			return action.payload;
 		}
-
-		case a.GET_PRODUCTS_REQUEST_FAILURE: {
-			// Handle action
-			break;
-		}
-
 		default:
 			return state;
 	}

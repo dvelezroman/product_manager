@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import productsReducer from "./product";
+import workingReducer from "./working";
 
 export const appReducer = combineReducers({
-	product: productsReducer
+	productsReducer,
+	workingReducer
 });
 
 export default (state, action) => {

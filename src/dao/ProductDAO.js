@@ -1,7 +1,7 @@
 import { BusinnessDAO } from "./BusinnessDAO";
 
 const endpoints = {
-	getAll: "",
+	getAll: "/products",
 	insert: "",
 	update: "",
 	delete: ""
@@ -9,7 +9,7 @@ const endpoints = {
 
 class ProductDAORaw extends BusinnessDAO {
 	constructor() {
-		super("id", "product", endpoints);
+		super("lotId", "products", endpoints);
 	}
 }
 
