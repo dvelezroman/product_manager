@@ -12,11 +12,18 @@ const headers = [
 	"Action"
 ];
 
-const ListProducts = ({ products, deleteProduct, sort, sortProducts }) => {
+const ListProducts = ({
+	products,
+	deleteProduct,
+	sort,
+	sortProducts,
+	filteredList
+}) => {
 	return (
 		<TableComponent
 			headers={headers}
 			data={products}
+			filteredList={filteredList}
 			sort={sort}
 			sortProducts={sortProducts}
 			deleteProduct={deleteProduct}

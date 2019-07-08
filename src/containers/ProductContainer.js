@@ -7,7 +7,8 @@ import {
 	getProductsRequest,
 	insertProductToLocal,
 	removeProductFromLocal,
-	sortProductsList
+	sortProductsList,
+	filterProductsList
 } from "../action-creators/product";
 
 import Products from "../components/Products";
@@ -27,12 +28,15 @@ class ProductContainer extends React.Component {
 				<Products
 					formData={this.logic.state.formData}
 					data={products}
+					filteredList={this.props.filtered}
 					working={working}
 					onChange={this.logic.onChange}
 					onPress={this.logic.onPress}
 					deleteProduct={this.logic.deleteProduct}
 					sortProducts={this.logic.sortProducts}
 					sort={this.state.sort}
+					searchString={this.state.searchString}
+					filterProducts={this.logic.filterProducts}
 				/>
 			</div>
 		);
@@ -41,7 +45,8 @@ class ProductContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	working: state.workingReducer,
-	products: state.productsReducer
+	products: state.productsReducer.products,
+	filtered: state.productsReducer.filtered
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -51,7 +56,8 @@ export function mapDispatchToProps(dispatch) {
 			getProductsRequest,
 			insertProductToLocal,
 			removeProductFromLocal,
-			sortProductsList
+			sortProductsList,
+			filterProductsList
 		},
 		dispatch
 	);

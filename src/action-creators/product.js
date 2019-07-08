@@ -4,7 +4,8 @@ import {
 	GET_PRODUCTS_REQUEST_SUCCESS,
 	REMOVE_PRODUCT_FROM_LOCAL,
 	INSERT_PRODUCT_TO_LOCAL,
-	SORT_PRODUCTS_LIST
+	SORT_PRODUCTS_LIST,
+	FILTER_PRODUCTS_LIST
 } from "../actions/product";
 
 // this action, gets the products from the API, using the ProductDAO in the saga
@@ -29,6 +30,11 @@ export const insertProductToLocal = product => ({
 
 export const sortProductsList = list => ({
 	type: SORT_PRODUCTS_LIST,
+	payload: list
+});
+
+export const filterProductsList = list => ({
+	type: FILTER_PRODUCTS_LIST,
 	payload: list
 });
 

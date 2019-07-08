@@ -6,6 +6,7 @@ export class ProductsLogic {
 		Container.state = {
 			products: [],
 			sort: true,
+			searchString: "",
 			formData: {
 				name: "",
 				descripton: "",
@@ -19,6 +20,7 @@ export class ProductsLogic {
 		this.state = Container.state;
 		this.props = Container.props;
 		this.sortProducts = this.sortProducts.bind(Container);
+		this.filterProducts = this.filterProducts.bind(Container);
 	}
 
 	fetchProducts = async () => {
@@ -63,6 +65,17 @@ export class ProductsLogic {
 		);
 		this.props.sortProductsList(sortedProducts);
 		this.props.setWorking(true);
+	}
+
+	filterProducts(searchString) {
+		const { products } = this.props;
+		const filteredProducts = BusinnessDAO.filterBy(
+			products,
+			"name",
+			searchString
+		);
+		this.setState({ searchString });
+		this.props.filterProductsList(filteredProducts);
 	}
 
 	deleteProduct = lotId => {

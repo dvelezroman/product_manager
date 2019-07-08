@@ -5,9 +5,9 @@ import { FaSortUp, FaSortDown } from "react-icons/fa";
 const TableComponent = ({
 	headers,
 	data,
+	filteredList,
 	deleteProduct,
-	sortProducts,
-	sort
+	sortProducts
 }) => {
 	return (
 		<Table responsive style={{ overflowY: "auto", maxHeight: "200" }}>
@@ -32,7 +32,7 @@ const TableComponent = ({
 				</tr>
 			</thead>
 			<tbody>
-				{data.map((item, index) => (
+				{filteredList.map((item, index) => (
 					<tr
 						key={`row_${item.name}`}
 						style={{ backgroundColor: index % 2 ? "#d9ecd0" : "#c2d4dd" }}

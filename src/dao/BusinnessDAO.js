@@ -1,4 +1,4 @@
-import { filter, orderBy } from "lodash";
+import { orderBy } from "lodash";
 
 import { Connection } from "./Connection";
 
@@ -44,9 +44,12 @@ export class BusinnessDAO {
     */
 
 	static filterBy(data, field, value) {
-		return filter(data, item => {
-			return item[field] === value;
+		const filteredList = data.filter(product => {
+			const valueLowered = value.toLowerCase();
+			const fieldLowered = product[field].toLowerCase();
+			return fieldLowered.includes(valueLowered);
 		});
+		return filteredList;
 	}
 
 	/* 
