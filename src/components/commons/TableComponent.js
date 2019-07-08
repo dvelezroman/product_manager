@@ -1,12 +1,13 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
+import { FaSortUp, FaSortDown } from "react-icons/fa";
 
 const TableComponent = ({
 	headers,
 	data,
 	deleteProduct,
 	sortProducts,
-	sortDirection
+	sort
 }) => {
 	return (
 		<Table responsive style={{ overflowY: "auto", maxHeight: "200" }}>
@@ -15,9 +16,16 @@ const TableComponent = ({
 					<th key={`header_#`}>#</th>
 					{headers.map((header, index) => (
 						<th className="text-center" key={`header_${index}`}>
-							{`${header}  `}
+							<div className="col-sm-10">{`${header}  `}</div>
 							{header === "Name" && (
-								<Button onClick={() => sortProducts()}>{sortDirection}</Button>
+								<div className="col-sm-2">
+									<div onClick={() => sortProducts(true)}>
+										<FaSortUp size="1em" />
+									</div>
+									<div onClick={() => sortProducts(false)}>
+										<FaSortDown size="1em" />
+									</div>
+								</div>
 							)}
 						</th>
 					))}

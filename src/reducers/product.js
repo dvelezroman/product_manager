@@ -3,7 +3,8 @@ import { remove } from "lodash";
 import {
 	GET_PRODUCTS_REQUEST_SUCCESS,
 	REMOVE_PRODUCT_FROM_LOCAL,
-	INSERT_PRODUCT_TO_LOCAL
+	INSERT_PRODUCT_TO_LOCAL,
+	SORT_PRODUCTS_LIST
 } from "../actions/product";
 
 const INITIAL_STATE = [];
@@ -20,6 +21,9 @@ export default function productsReducer(state = INITIAL_STATE, action) {
 			let products = [...state];
 			remove(products, product => product.lotId === action.payload);
 			return [...products];
+		}
+		case SORT_PRODUCTS_LIST: {
+			return action.payload;
 		}
 		default:
 			return state;

@@ -5,7 +5,7 @@ export class ProductsLogic {
 		this.setState = Container.setState.bind(Container);
 		Container.state = {
 			products: [],
-			sort: "asc",
+			sort: true,
 			formData: {
 				name: "",
 				descripton: "",
@@ -18,6 +18,7 @@ export class ProductsLogic {
 		};
 		this.state = Container.state;
 		this.props = Container.props;
+		this.sortProducts = this.sortProducts.bind(Container);
 	}
 
 	fetchProducts = async () => {
@@ -51,9 +52,18 @@ export class ProductsLogic {
 		this.props.setWorking(false);
 	};
 
-	sortProducts = (order = "asc") => {
-		return BusinnessDAO.orderBy(this.props.products, "name", order);
-	};
+	sortProducts(sort) {
+		const order = sort ? "asc" : "desc";
+		this.props.setWorking(true);
+		this.setState({ sort });
+		const sortedProducts = BusinnessDAO.sortBy(
+			this.props.products,
+			["name"],
+			[order]
+		);
+		this.props.sortProductsList(sortedProducts);
+		this.props.setWorking(true);
+	}
 
 	deleteProduct = lotId => {
 		this.props.setWorking(true);

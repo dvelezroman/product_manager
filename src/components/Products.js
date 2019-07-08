@@ -9,7 +9,9 @@ const Products = ({
 	working,
 	onChange,
 	onPress,
-	deleteProduct
+	deleteProduct,
+	sort,
+	sortProducts
 }) => (
 	<div>
 		<FormComponent onChange={onChange} onPress={onPress} formData={formData} />
@@ -19,7 +21,12 @@ const Products = ({
 			</div>
 		) : (
 			<div>
-				<ListProducts products={data} deleteProduct={deleteProduct} />
+				<ListProducts
+					products={data}
+					deleteProduct={deleteProduct}
+					sort={sort}
+					sortProducts={sortProducts}
+				/>
 			</div>
 		)}
 	</div>

@@ -1,4 +1,4 @@
-import { filter } from "lodash";
+import { filter, orderBy } from "lodash";
 
 import { Connection } from "./Connection";
 
@@ -59,7 +59,8 @@ export class BusinnessDAO {
 
     */
 
-	static orderBy(data, orderBy, order = ["asc"]) {
-		return orderBy(data, [...orderBy], [...order]);
+	static sortBy(data, field, order = ["asc"]) {
+		const sorted = orderBy(data, [...field], [...order]);
+		return sorted;
 	}
 }

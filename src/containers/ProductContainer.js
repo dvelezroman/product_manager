@@ -6,7 +6,8 @@ import { setWorking } from "../action-creators/working";
 import {
 	getProductsRequest,
 	insertProductToLocal,
-	removeProductFromLocal
+	removeProductFromLocal,
+	sortProductsList
 } from "../action-creators/product";
 
 import Products from "../components/Products";
@@ -30,6 +31,8 @@ class ProductContainer extends React.Component {
 					onChange={this.logic.onChange}
 					onPress={this.logic.onPress}
 					deleteProduct={this.logic.deleteProduct}
+					sortProducts={this.logic.sortProducts}
+					sort={this.state.sort}
 				/>
 			</div>
 		);
@@ -47,7 +50,8 @@ export function mapDispatchToProps(dispatch) {
 			setWorking,
 			getProductsRequest,
 			insertProductToLocal,
-			removeProductFromLocal
+			removeProductFromLocal,
+			sortProductsList
 		},
 		dispatch
 	);
