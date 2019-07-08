@@ -1,6 +1,9 @@
 import { WORKING } from "../actions/working";
 
-const INITIAL_STATE = false;
+const INITIAL_STATE = {
+	status: false,
+	progress: 0
+};
 
 export default function workingReducer(state = INITIAL_STATE, action) {
 	switch (action.type) {

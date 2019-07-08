@@ -3,9 +3,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ProductsLogic } from "./ProductsLogic";
 import { setWorking } from "../action-creators/working";
-import { getProductsRequest } from "../action-creators/product";
+import {
+	getProductsRequest,
+	insertProductToLocal,
+	removeProductFromLocal
+} from "../action-creators/product";
 
 import Products from "../components/Products";
+import Header from "../components/commons/Header";
 
 class ProductContainer extends React.Component {
 	constructor(props) {
@@ -13,15 +18,21 @@ class ProductContainer extends React.Component {
 		this.logic = new ProductsLogic(this);
 	}
 
-	componentDidMount() {
-		this.logic.fetchProducts();
-	}
-
 	render() {
 		const { products, working } = this.props;
-		console.log({ products });
-		console.log({ working });
-		return <Products products={products} working={working} />;
+		return (
+			<div className="container-fluid">
+				<Header fetchProducts={this.logic.fetchProducts} />
+				<Products
+					formData={this.logic.state.formData}
+					data={products}
+					working={working}
+					onChange={this.logic.onChange}
+					onPress={this.logic.onPress}
+					deleteProduct={this.logic.deleteProduct}
+				/>
+			</div>
+		);
 	}
 }
 
@@ -34,7 +45,9 @@ export function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
 		{
 			setWorking,
-			getProductsRequest
+			getProductsRequest,
+			insertProductToLocal,
+			removeProductFromLocal
 		},
 		dispatch
 	);

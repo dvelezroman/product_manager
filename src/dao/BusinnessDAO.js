@@ -60,6 +60,6 @@ export class BusinnessDAO {
     */
 
 	static orderBy(data, orderBy, order = ["asc"]) {
-		orderBy(data, [...orderBy], [...order]);
+		return orderBy(data, [...orderBy], [...order]);
 	}
 }

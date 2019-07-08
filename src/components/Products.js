@@ -1,9 +1,27 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { Spinner } from "reactstrap";
+import ListProducts from "./ListProducts";
+import FormComponent from "./commons/FormComponent";
 
-const Products = ({ products, working }) => (
+const Products = ({
+	formData,
+	data,
+	working,
+	onChange,
+	onPress,
+	deleteProduct
+}) => (
 	<div>
-		{working ? <h2>Loading...</h2> : <Button color="danger">Danger!</Button>}
+		<FormComponent onChange={onChange} onPress={onPress} formData={formData} />
+		{working.status ? (
+			<div className="container text-center">
+				<Spinner />
+			</div>
+		) : (
+			<div>
+				<ListProducts products={data} deleteProduct={deleteProduct} />
+			</div>
+		)}
 	</div>
 );
 

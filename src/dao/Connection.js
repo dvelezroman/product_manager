@@ -1,5 +1,8 @@
 import axios from "axios";
+import { loadProgressBar } from "axios-progress-bar";
 import { API_URL } from "../config/default";
+
+loadProgressBar();
 
 export class Connection {
 	static get(endpoint) {

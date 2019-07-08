@@ -2,7 +2,8 @@ import {
 	GET_PRODUCTS_REQUEST,
 	// GET_PRODUCTS_REQUEST_FAILURE,
 	GET_PRODUCTS_REQUEST_SUCCESS,
-	REMOVE_PRODUCT_FROM_LOCAL
+	REMOVE_PRODUCT_FROM_LOCAL,
+	INSERT_PRODUCT_TO_LOCAL
 } from "../actions/product";
 
 // this action, gets the products from the API, using the ProductDAO in the saga
@@ -15,9 +16,14 @@ export const getProductsRequestSuccess = data => ({
 	payload: data
 });
 
-export const removeProductFromLocal = productId => ({
+export const removeProductFromLocal = lotId => ({
 	type: REMOVE_PRODUCT_FROM_LOCAL,
-	payload: productId
+	payload: lotId
+});
+
+export const insertProductToLocal = product => ({
+	type: INSERT_PRODUCT_TO_LOCAL,
+	payload: product
 });
 
 // export const getProductsRequestFailure = data => ({
